@@ -71,5 +71,9 @@
     // {
       # Instantiate pkgset for this flake against an arbitrary nixpkgs base
       mkPkgset = pkgs: pkgs.callPackage ./packages { inherit nix-pkgset; };
+
+      overlays.default = final: _prev: {
+        lun-pkgs = self.mkPkgset final;
+      };
     };
 }
