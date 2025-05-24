@@ -9,4 +9,6 @@ nix-pkgset.lib.makePackageSet "lun-pkgs" pkgs.newScope (self: {
   switchtec-user = self.callPackage ./switchtec-user { };
   samrewritten = self.callPackage ./samrewritten { };
   edhm-ui = self.callPackage ./edhm-ui { };
+  wine-ge = self.callPackage ./wine-ge { };
+  wine = self.callPackage ./wine { };
 })

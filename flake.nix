@@ -41,11 +41,12 @@
               nil.enable = true;
               nixfmt-rfc-style.enable = true;
               # shell
-              shellcheck = {
-                enable = true;
-                files = "\\.sh$";
-                types_or = lib.mkForce [ ];
-              };
+              # FIXME: not sure I want this, nix hooks are not fun to write with it
+              # shellcheck = {
+              #   enable = true;
+              #   files = "\\.sh$";
+              #   types_or = lib.mkForce [ ];
+              # };
               # bats.enable = true; # FIXME: fails .envrc
               beautysh = {
                 enable = true;
