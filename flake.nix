@@ -29,7 +29,10 @@
 
         lib = lib.filterAttrs (_: lib.isFunction) self.legacyPackages.${system};
 
-        packages = lib.filterAttrs (_: lib.isDerivation) self.legacyPackages.${system};
+        # Only include top level non-broken derivations because nix flake check gets mad
+        packages = lib.filterAttrs (
+          _: pkg: (lib.isDerivation pkg) && (!(pkg.meta.broken or false))
+        ) self.legacyPackages.${system};
 
         checks = {
           pre-commit-check = pre-commit-hooks.lib.${system}.run {
